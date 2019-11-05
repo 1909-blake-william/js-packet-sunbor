@@ -54,6 +54,11 @@ function testDriver(){
     testArray = [1, 2, 3, 4, 5, 6, 7];
     console.log('10');
     deleteElement(testArray);
+
+    //11
+    testArray = [1, 2, 3, 4, 5, 6, 7];
+    console.log('11');
+    spliceElement(testArray);
 }
 // 1. Fibonacci
 // Define function: fib(n)
@@ -303,16 +308,33 @@ function deleteElement(someArr){
 // Splice the third element in the array.
 // Print length
 // The lengths should be one less than the original length.
-
+function spliceElement(someArr){
+    console.log(someArr.length);
+    console.log(someArr);
+    someArr.splice(2, 1);
+    console.log(someArr.length);
+    console.log(someArr);
+}
 
 
 // 12. Defining an object using a constructor
 // Define a function Person(name, age)
 // The following line should set a Person object to the variable john:
 // 	let john = new Person("John", 30);
+function Person(name, age){
+    this.name = name;
+    this.age = age;
+}
 
 
 // 13. Defining an object using an object literal
 // Define function getPerson(name, age)
 // The following line should set a Person object to the variable john:
 // 	let john = getPerson("John", 30);
+function getPerson(name, age){
+    let newPerson = {
+        name: name,
+        age: age
+    }
+    return newPerson;
+}
