@@ -114,11 +114,27 @@
     // Define function getHobbies()
     // Find all checked options in the 'skills' select element.
     // Print the value and the contents.
+    function getHobbies(){
+      
+
+    }
     // 5. Custom Attribute
     // Define function getCustomAttribute()
     // Find all elements with "data-customAttr" attribute
     // Print the value of the attribute.
     // Print the element that has the attribute.
+    getCustomAttribute();
+    function getCustomAttribute(){
+      let allCus = document.querySelectorAll('[data-customAttr]');
+      // for(cus of allCus){
+      //   console.log(cus.getAttribute('data-customAttr'));
+      //   console.log(cus);
+      // }
+      for(let i=0; i<allCus.length; i++){
+        console.log(allCus[i].getAttribute('data-customAttr'));
+        console.log(allCus[i].innerHTML);
+      }
+    }
     // 6. Sum Event
     // Regarding these elements:
     // 	<input id="num1" class="nums" type="text"/>
@@ -128,11 +144,33 @@
     // Add <input> element values.
     // Put the sum in the <span> element.
     // If values cannot be added, put "Cannot add" in the <span> element
+    document.getElementById('num1').addEventListener('keyup', sumNum);
+    document.getElementById('num2').addEventListener('input', sumNum);
+    function sumNum(){
+      let num1 = Number(document.getElementById('num1').value);
+      let num2 = Number(document.getElementById('num2').value);
+      let theSum = document.getElementById('sum');
+      theSum.innerText = num1 + num2;
+      if(theSum.innerText === 'NaN'){
+        theSum.innerText = 'Cannot add';
+      }
+    }
     // 7. Skills Event
     // When user selects a skill, create an alert with a message similar to:
     // 	"Are you sure CSS is one of your skills?"
     // NOTE: no alert should appear when user deselects a skill.
-    
+    let skillList = document.getElementsByName("skills")[0];
+    skillList.addEventListener("change", passAgg);
+    function passAgg(){
+      alert("are you sure css is one of your skills??");
+    }
+    // let skillOptions = skillList.childNodes;
+    // for(let i=0; i<skillOptions.length; i++){
+    //   skillOptions[i].addEventListener("onchange", function(){passAgg(i)});
+    // }
+    // function passAgg(op){
+    //   console.log(op);
+    // }
     // 8. Favorite Color Event
     // NOTE: This is regarding the favoriteColor radio buttons.
     // When a user selects a color, create an alert with a message similar to:
@@ -153,8 +191,6 @@
       for(aRadio of radios){
         aRadio.style.backgroundColor = newColor;
       }
-
-
     }
     // 9. Show/Hide Event
     // When user hovers over an employees name:
