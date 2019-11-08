@@ -114,9 +114,13 @@
     // Define function getHobbies()
     // Find all checked options in the 'skills' select element.
     // Print the value and the contents.
+    getHobbies();
     function getHobbies(){
-      
-
+      let hobList = document.getElementsByName('skills')[0];
+      let hobSelect = hobList.selectedOptions;
+      for(hob of hobSelect){
+        console.log(hob.value + ' ' + hob.innerHTML);
+      }
     }
     // 5. Custom Attribute
     // Define function getCustomAttribute()
