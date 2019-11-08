@@ -132,26 +132,74 @@
     // When user selects a skill, create an alert with a message similar to:
     // 	"Are you sure CSS is one of your skills?"
     // NOTE: no alert should appear when user deselects a skill.
+    
     // 8. Favorite Color Event
     // NOTE: This is regarding the favoriteColor radio buttons.
     // When a user selects a color, create an alert with a message similar to:
     // 	"So you like green more than blue now?"
     // In this example, green is the new value and blue is the old value.
     // Make the background color (of all favoriteColor radio buttons) the newly selected favoriteColor
+    let radios = document.getElementsByName("favoriteColor");
+    for(let i=0; i<radios.length; i++){
+      radios[i].addEventListener("change", function(){radioColor(i)});
+    }
+    function radioColor(i){
+      let radios = document.getElementsByName("favoriteColor");
+      let oldColor = radios[i].style.backgroundColor;
+      let newColor = radios[i].value;
+      if(oldColor !== ''){
+        alert(`you like ${newColor} more than ${oldColor} now????????`);
+      }
+      for(aRadio of radios){
+        aRadio.style.backgroundColor = newColor;
+      }
+
+
+    }
     // 9. Show/Hide Event
     // When user hovers over an employees name:
     // 	Hide the name if shown.
     // 	Show the name if hidden.
+    let empList = document.getElementsByClassName('empName');
+    for(let i=0; i<empList.length; i++){
+      empList[i].addEventListener("mouseover", function(){toggleName(i)});
+    }
+    function toggleName(empNum){
+      let empName = document.getElementsByClassName('empName');
+      //console.log(empName[empNum].style.backgroundColor);
+      if(empName[empNum].style.color === 'white'){
+        empName[empNum].style.color = 'initial';
+      }
+      else{
+        empName[empNum].style.color = 'white';
+      }
+    }
     // 10. Current Time
     // Regarding this element:
     // 	<h5 id="currentTime"></h5>
     // Show the current time in this element in this format: 9:05:23 AM
     // The time should be accurate to the second without having to reload the page.
+    setInterval(clock, 1000);
+    function clock(){
+      let clockElement = document.getElementById('currentTime');
+      let theDate = new Date();
+      let theTime = theDate.toLocaleTimeString();
+      clockElement.innerText = theTime;
+    }
     // 11. Delay
     // Regarding this element:
     // 	<p id="helloWorld">Hello, World!</p>
     // Three seconds after a user clicks on this element, change the text to a random color.
-    
+     function worldColor(){
+       let world = document.getElementById('helloWorld');
+       let r = Math.floor(Math.random() * 256);
+       let g = Math.floor(Math.random() * 256);
+       let b = Math.floor(Math.random() * 256);
+       console.log(r + ' ' + g + ' ' + b);
+       world.style.color = `rgb(${r}, ${g}, ${b})`;
+     }
+    document.getElementById('helloWorld').onclick = function(){setTimeout(worldColor, 3000)};
+
     // 12. Walk the DOM
     // Define function walkTheDOM(node, func)
     // This function should traverse every node in the DOM. Use recursion.
