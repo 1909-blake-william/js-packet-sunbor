@@ -103,6 +103,15 @@
     // Define function getUSA()
     // Find the html element that contains "USA" in the data-customAttr.
     // Print that element's contents.
+    getUSA();
+    function getUSA(){
+      let allCus = document.querySelectorAll('[data-customAttr]');
+      for(cus of allCus){
+        if(cus.getAttribute('data-customAttr') === 'USA'){
+          console.log(cus.innerText);
+        }
+      }
+    }
     // 2. Sales
     // Define function getPeopleInSales()
     // Print the names of all the people in the sales department.
@@ -113,7 +122,6 @@
         if(emp.nextSibling.nextSibling.innerText === 'Sales'){
           console.log(emp.innerText);
         }
-        //console.log(emp.nextSibling.nextSibling.innerText);
       }
     }
     // 3. Click Here
