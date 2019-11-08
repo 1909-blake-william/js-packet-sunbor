@@ -274,6 +274,7 @@
     // Define function walkTheDOM(node, func)
     // This function should traverse every node in the DOM. Use recursion.
     // On each node, call func(node).
+    walkTheDOM(document, console.log);
     function walkTheDOM(node, func){
       func(node);
       let kids = node.childNodes;
